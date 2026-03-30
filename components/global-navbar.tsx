@@ -5,9 +5,11 @@ import { usePathname } from "next/navigation";
 
 import { SearchCommand } from "@/components/search-command";
 import { NavRankBadge } from "@/components/leaderboard/nav-rank-badge";
+import { NotificationCenter } from "@/components/notifications/notification-center";
 import { WalletSheet } from "@/components/wallet/wallet-sheet";
 import { useSmartWallet } from "@/components/providers/smart-wallet-provider";
 import { WalletInfo } from "@/types/wallet";
+import { CreditBalance } from "@/components/reputation/credit-balance";
 import { Button } from "@/components/ui/button";
 import { ModeToggle } from "./mode-toggle";
 import { SecureAccountStep } from "./onboarding/secure-account-step";
@@ -114,7 +116,10 @@ export function GlobalNavbar() {
 
         <div className="flex items-center gap-3">
           <NavRankBadge userId="user-1" className="hidden sm:flex" />
+          <CreditBalance userId="user-1" className="hidden sm:flex" />
           {/* TODO: Replace with actual auth user ID */}
+
+          <NotificationCenter />
 
           {isConnected ? (
             <WalletSheet
